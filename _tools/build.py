@@ -511,7 +511,7 @@ def copy_static():
             shutil.copy2(f, dst)
 
 
-SOON_TEXT = "This website is under construction.<br>Please check back soon."
+SOON_TEXT = "This website is under construction. Please check back soon."
 
 INSTAGRAM_ICON = ('<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" '
                   'stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/>'
@@ -535,7 +535,7 @@ def build_soon(c):
     base_path = urlparse(site["url"]).path.rstrip("/") + "/"
     first = imgs[0]["m"]
 
-    photo = (f'<img id="soon-img" alt="Work by {e(name)}" sizes="(max-width: 760px) 90vw, 40vw">\n'
+    photo = (f'<img id="soon-img" alt="Work by {e(name)}" sizes="(max-width: 760px) 90vw, 56vh">\n'
              f'    <noscript><img src="{first["src"]}" width="{first["w"]}" height="{first["h"]}" alt="Work by {e(name)}"></noscript>')
     if has_insta:
         link = f'href="{e(insta)}" target="_blank" rel="noopener"'
@@ -557,28 +557,26 @@ def build_soon(c):
   <link rel="preload" href="fonts/hanken-grotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .soon-wrap {{ min-height: 100vh; display: flex; align-items: center; justify-content: center; gap: 2rem; padding: var(--pad); }}
+    .soon-wrap {{ min-height: 100vh; margin: 0; display: flex; align-items: center; justify-content: center; padding: var(--pad); }}
+    /* Box width = displayed image width (set from the image ratio by the script below),
+       so the text line above never sticks out past the image */
+    .soon-box {{ width: min(56vh, 90vw); }}
+    .soon-text {{ margin: 0 0 0.6rem; }}
     .soon-img {{ margin: 0; }}
-    .soon-img img {{ max-width: 40vw; max-height: 70vh; width: auto; height: auto; background: var(--placeholder); }}
+    .soon-img img {{ width: 100%; height: auto; background: var(--placeholder); }}
     .soon-photo {{ display: block; }}
     .soon-photo:hover img {{ opacity: 0.9; }}
     .soon-insta {{ display: inline-flex; align-items: center; gap: 0.4em; margin-top: 0.6rem; }}
     .soon-insta:hover {{ color: var(--ink-3); }}
-    .soon-text {{ max-width: 22rem; }}
-    .soon-text p {{ margin: 0; }}
-    @media (max-width: 760px) {{
-      .soon-wrap {{ flex-direction: column; align-items: flex-start; }}
-      .soon-img img {{ max-width: 100%; max-height: 60vh; }}
-    }}
   </style>
 </head>
 <body>
 <main class="soon-wrap">
-  <figure class="soon-img">
+  <div class="soon-box">
+    <p class="soon-text">{text}</p>
+    <figure class="soon-img">
     {photo}
-  </figure>
-  <div class="soon-text">
-    <p>{text}</p>
+    </figure>
   </div>
 </main>
 <script>
@@ -587,6 +585,8 @@ def build_soon(c):
     var all = {data};
     var x = all[Math.floor(Math.random() * all.length)];
     var img = document.getElementById("soon-img");
+    // At most 70% of the screen height and 90% of its width
+    document.querySelector(".soon-box").style.width = "min(" + (70 * x.w / x.h).toFixed(2) + "vh, 90vw)";
     img.width = x.w;
     img.height = x.h;
     img.srcset = x.srcset;
