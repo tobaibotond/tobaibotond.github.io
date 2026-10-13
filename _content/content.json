@@ -17,6 +17,14 @@
     ],
     "goatcounter": ""
   },
+  "maintenance": {
+    "enabled": true,
+    "count": 24,
+    "text": {
+      "en": "This website is under construction.<br>Please check back soon.",
+      "hu": "Az oldal hamarosan elkészül, nézz vissza később!"
+    }
+  },
   "categories": [
     {
       "id": "films",

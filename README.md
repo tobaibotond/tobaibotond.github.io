@@ -54,6 +54,13 @@ Minden szöveg lehet sima szöveg (mindkét nyelven ugyanaz), vagy `{"hu": "..."
 
 **A `PLACEHOLDER-` kezdetű fájlok csak minták** (a `_tools/make_placeholders.py` generálta őket a projektképekből). Cseréld le őket: töröld a mintákat a `strips/` mappából és tedd be a sajátjaidat; a mozgó borítóknál írd át a `cover_loop` útvonalat. Utána `python _tools/build.py`.
 
+### Ideiglenes oldal („under construction”)
+A `content.json` → `maintenance.enabled`:
+- `true`: a domainen csak egy ideiglenes oldal látszik (név, „under construction” szöveg és minden betöltéskor egy véletlen kép a projektekből). A teljes oldal ilyenkor a `_preview/` mappába készül: helyben a `_preview/index.html`-lel nézhető meg, de **nem kerül fel** a GitHubra.
+- `false`: a teljes oldal megy élesbe, a `_preview/` mappa törlődik.
+
+A szöveg a `maintenance.text` alatt írható át, a képek száma a `maintenance.count`-tal állítható. Az e-mail és az Instagram link csak akkor jelenik meg, ha a `site.email` / `site.instagram` valódi címre van átírva. Átállítás után: `python _tools/build.py`, majd feltöltés.
+
 ### Megosztási előnézet, domain
 `site.url`: a végleges cím (pl. `https://www.domained.hu`). Ebből készülnek a Facebook/Instagram/Messenger előnézeti linkek, a `sitemap.xml` és a 404-es oldal hivatkozásai. **Élesítés előtt állítsd be!**
 

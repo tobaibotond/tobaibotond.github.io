@@ -8,6 +8,11 @@ Generates:
   img/   WebP images in 3 sizes (s=420, m=800, l=1600), film strips, og/ share images
   media/ moving covers (home page, left) and local project videos
 
+Maintenance mode (content.json -> "maintenance": {"enabled": true}):
+  the public root only gets a temporary "under construction" page (index.html + 404.html)
+  with a random project image; the full site is built into _preview/ for local viewing
+  (_preview/ is git-ignored, so it is never published).
+
 Images are only re-encoded when the source is newer than the output.
 Files in img/, media/ and generated page folders that are no longer produced are removed.
 
@@ -27,6 +32,8 @@ from PIL import Image, ImageOps
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT / "_content"
 MANIFEST = ROOT / "_tools" / ".generated.json"
+PREVIEW = "_preview/"
+PREFIX = ""  # PREVIEW in maintenance mode: the full site is written there
 SIZES = {"s": 420, "m": 800, "l": 1600}
 IMG_EXT = {".jpg", ".jpeg", ".png", ".webp", ".tif", ".tiff"}
 
@@ -67,8 +74,9 @@ def resolve_src(path):
     return p if p.is_absolute() else CONTENT_DIR / p
 
 
-def out(rel):
-    p = ROOT / rel
+def out(rel, root=False):
+    """Path for a generated file; full-site files go under PREFIX, root=True files to the site root."""
+    p = ROOT / (rel if root else PREFIX + rel)
     p.parent.mkdir(parents=True, exist_ok=True)
     produced.add(p.resolve())
     return p
@@ -82,7 +90,7 @@ def load_image(src):
     return ImageOps.exif_transpose(Image.open(src)).convert("RGB")
 
 
-def variants(src: Path, base: str):
+def variants(src: Path, base: str, root=False):
     """Write WebP size variants for one image. Returns {key: {src,w,h}}."""
     im = load_image(src)
     w, h = im.size
@@ -94,7 +102,7 @@ def variants(src: Path, base: str):
             continue
         th = round(h * tw / w)
         rel = f"{base}-{key}.webp"
-        dst = out(rel)
+        dst = out(rel, root)
         if not fresh(src, dst):
             im.resize((tw, th), Image.LANCZOS).save(dst, "WEBP", quality=80, method=6)
         res[key] = {"src": rel, "w": tw, "h": th}
@@ -256,6 +264,11 @@ def main():
     langs = site["languages"]
     default = langs[0]
     year = date.today().year
+    global PREFIX
+    maintenance = c.get("maintenance", {}).get("enabled", False)
+    PREFIX = PREVIEW if maintenance else ""
+    if maintenance:
+        print("Maintenance mode: public root = temporary page, full site -> _preview/")
 
     # --- images per project
     print("Images...")
@@ -264,6 +277,7 @@ def main():
         files = sorted(f for f in src_dir.iterdir() if f.suffix.lower() in IMG_EXT)
         if not files:
             sys.exit(f"No images in {src_dir}")
+        p["_files"] = files
         p["_images"] = [variants(f, f"img/{p['slug']}/{i + 1:02d}") for i, f in enumerate(files)]
         p["_og"] = og_image(files[0], p["slug"])
         poster = p.get("video_poster")
@@ -305,6 +319,8 @@ def main():
 
     # --- static assets
     favicons()
+    if PREFIX:
+        copy_static()
 
     for lang in langs:
         ui = UI[lang]
@@ -445,7 +461,7 @@ def main():
     # CNAME for GitHub Pages when the site runs on its own domain
     host = urlparse(site["url"]).hostname or ""
     if host and not host.endswith("github.io") and host != "example.com":
-        out("CNAME").write_text(host + "\n", encoding="utf-8")
+        out("CNAME", root=True).write_text(host + "\n", encoding="utf-8")
 
     # sitemap + robots
     base = site["url"].rstrip("/") + "/"
@@ -454,10 +470,14 @@ def main():
         urls.append(page_path("home", lang, default))
         urls.append(page_path("info", lang, default))
         urls += [page_path("project", lang, default, p["slug"]) for p in c["projects"]]
-    out("sitemap.xml").write_text(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{base}{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
-    out("robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {base}sitemap.xml\n", encoding="utf-8")
+    if maintenance:
+        out("robots.txt", root=True).write_text("User-agent: *\nAllow: /\n", encoding="utf-8")
+        build_soon(c)
+    else:
+        out("sitemap.xml").write_text(
+            '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + "".join(f"  <url><loc>{base}{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
+        out("robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {base}sitemap.xml\n", encoding="utf-8")
 
     cleanup(c, langs, default)
     print(f"Done: {len(c['projects'])} projects x {len(langs)} languages.")
@@ -468,11 +488,11 @@ def favicons():
     svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">'
            '<style>circle{fill:#000}@media (prefers-color-scheme:dark){circle{fill:#fff}}</style>'
            '<circle cx="16" cy="16" r="11"/></svg>\n')
-    dst = out("favicon.svg")
+    dst = out("favicon.svg", root=True)
     if not dst.exists():
         dst.write_text(svg, encoding="utf-8")
     for name, size, pad in (("favicon-32.png", 32, 5), ("apple-touch-icon.png", 180, 40)):
-        dst = out(name)
+        dst = out(name, root=True)
         if dst.exists():
             continue
         from PIL import ImageDraw
@@ -481,9 +501,109 @@ def favicons():
         im.resize((size, size), Image.LANCZOS).save(dst)
 
 
+def copy_static():
+    """The preview in _preview/ needs its own copy of the hand-written assets."""
+    files = [f for d in ("css", "js", "fonts") for f in (ROOT / d).rglob("*") if f.is_file()]
+    files += [ROOT / n for n in ("favicon.svg", "favicon-32.png", "apple-touch-icon.png")]
+    for f in files:
+        dst = out(str(f.relative_to(ROOT)).replace("\\", "/"))
+        if not fresh(f, dst):
+            shutil.copy2(f, dst)
+
+
+SOON_TEXT = {
+    "en": "This website is under construction.<br>Please check back soon.",
+    "hu": "Az oldal hamarosan elkészül, nézz vissza később!",
+}
+
+
+def build_soon(c):
+    """Temporary public page: a random project image with an under-construction note."""
+    site, m = c["site"], c.get("maintenance", {})
+    name = tr(site["name"], "en")
+    pool = [f for p in c["projects"] for f in p["_files"]]
+    count = m.get("count", 24)
+    chosen = pool[:: max(1, len(pool) // count)][:count]
+    imgs = [variants(f, f"img/soon/{i + 1:02d}", root=True) for i, f in enumerate(chosen)]
+    data = json.dumps([{"src": v["m"]["src"], "srcset": srcset(v).replace("{R}", ""),
+                        "w": v["m"]["w"], "h": v["m"]["h"]} for v in imgs])
+    text = m.get("text", SOON_TEXT)
+    links = []
+    if site.get("email") and not site["email"].endswith("example.com"):
+        links.append(f'<a href="mailto:{e(site["email"])}">{e(site["email"])}</a>')
+    if site.get("instagram") and site["instagram"].rstrip("/") != "https://instagram.com":
+        links.append(f'<a href="{e(site["instagram"])}" target="_blank" rel="noopener">Instagram</a>')
+    contact = f'\n    <p class="soon-links">{" · ".join(links)}</p>' if links else ""
+    base_path = urlparse(site["url"]).path.rstrip("/") + "/"
+    first = imgs[0]["m"]
+
+    def page(extra_head=""):
+        return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{e(name)} — under construction</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="{e(name)}: website under construction.">{extra_head}
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="fonts/hanken-grotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .soon-wrap {{ min-height: 100vh; display: flex; align-items: center; justify-content: center; gap: 2rem; padding: var(--pad); }}
+    .soon-img {{ margin: 0; }}
+    .soon-img img {{ max-width: 40vw; max-height: 70vh; width: auto; height: auto; background: var(--placeholder); }}
+    .soon-text {{ max-width: 22rem; }}
+    .soon-text h1 {{ margin: 0 0 1.2rem; font-size: 1.4rem; font-weight: 700; line-height: 1; }}
+    .soon-text p {{ margin: 0 0 1em; }}
+    .soon-text .hu {{ color: var(--ink-3); }}
+    .soon-links a:hover {{ color: var(--ink-3); }}
+    @media (max-width: 760px) {{
+      .soon-wrap {{ flex-direction: column; align-items: flex-start; }}
+      .soon-img img {{ max-width: 100%; max-height: 60vh; }}
+    }}
+  </style>
+</head>
+<body>
+<main class="soon-wrap">
+  <figure class="soon-img">
+    <img id="soon-img" alt="Work by {e(name)}" sizes="(max-width: 760px) 90vw, 40vw">
+    <noscript><img src="{first["src"]}" width="{first["w"]}" height="{first["h"]}" alt="Work by {e(name)}"></noscript>
+  </figure>
+  <div class="soon-text">
+    <h1>{e(name)}</h1>
+    <p>{tr(text, "en")}</p>
+    <p class="hu" lang="hu">{tr(text, "hu")}</p>{contact}
+  </div>
+</main>
+<script>
+  // A different image on every visit
+  (function () {{
+    var all = {data};
+    var x = all[Math.floor(Math.random() * all.length)];
+    var img = document.getElementById("soon-img");
+    img.width = x.w;
+    img.height = x.h;
+    img.srcset = x.srcset;
+    img.src = x.src;
+  }})();
+</script>
+</body>
+</html>
+"""
+
+    out("index.html", root=True).write_text(page(), encoding="utf-8")
+    # 404: same page; <base> keeps asset paths working at any URL depth
+    out("404.html", root=True).write_text(page(f'\n  <base href="{base_path}">'), encoding="utf-8")
+    print(f"  temporary page: {len(imgs)} images")
+
+
 def cleanup(c, langs, default):
     """Remove generated files that were not produced by this build."""
-    for d in ("img", "media"):
+    asset_dirs = ("img", "media", PREVIEW + "img", PREVIEW + "media")
+    for d in asset_dirs:
         for f in (ROOT / d).rglob("*") if (ROOT / d).exists() else []:
             if f.is_file() and f.resolve() not in produced:
                 f.unlink()
@@ -494,15 +614,27 @@ def cleanup(c, langs, default):
         f = ROOT / rel
         if f.exists():
             f.unlink()
-            try:
-                f.parent.rmdir()
-            except OSError:
-                pass
+            # Remove now-empty page folders (e.g. hu/film-01/, then hu/)
+            d = f.parent
+            while d != ROOT:
+                try:
+                    d.rmdir()
+                except OSError:
+                    break
+                d = d.parent
     MANIFEST.write_text(json.dumps(now, indent=1))
-    for d in sorted((ROOT / x for x in ("img", "media")), reverse=True):
+    for name in ("sitemap.xml", "robots.txt", "404.html", "CNAME"):
+        f = ROOT / name
+        if f.exists() and f.resolve() not in produced:
+            f.unlink()
+    if not PREFIX and (ROOT / PREVIEW).exists():
+        shutil.rmtree(ROOT / PREVIEW)
+    for d in sorted((ROOT / x for x in asset_dirs), reverse=True):
         for sub in sorted(d.rglob("*"), reverse=True) if d.exists() else []:
             if sub.is_dir() and not any(sub.iterdir()):
                 sub.rmdir()
+        if d.exists() and not any(d.iterdir()):
+            d.rmdir()
 
 
 if __name__ == "__main__":

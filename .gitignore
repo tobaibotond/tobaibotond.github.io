@@ -5,3 +5,6 @@ DNS.jpg
 # Build cache / state
 _tools/.cache/
 _tools/.generated.json
+
+# Full-site preview while maintenance mode is on (never published)
+_preview/

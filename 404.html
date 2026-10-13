@@ -3,76 +3,53 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>404 — Botond Tobai</title>
-  <meta name="description" content="Page not found.">
-  <link rel="canonical" href="https://tobaibotond.com/404.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Botond Tobai">
-  <meta property="og:title" content="404 — Botond Tobai">
-  <meta property="og:description" content="Page not found.">
-  <meta property="og:url" content="https://tobaibotond.com/404.html">
-  <meta property="og:image" content="https://tobaibotond.com/img/og/film-01.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
+  <title>Botond Tobai — under construction</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Botond Tobai: website under construction.">
+  <base href="/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="fonts/hanken-grotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.classList.add("js")</script>
-  <base href="/">
+  <style>
+    .soon-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; gap: 2rem; padding: var(--pad); }
+    .soon-img { margin: 0; }
+    .soon-img img { max-width: 40vw; max-height: 70vh; width: auto; height: auto; background: var(--placeholder); }
+    .soon-text { max-width: 22rem; }
+    .soon-text h1 { margin: 0 0 1.2rem; font-size: 1.4rem; font-weight: 700; line-height: 1; }
+    .soon-text p { margin: 0 0 1em; }
+    .soon-text .hu { color: var(--ink-3); }
+    .soon-links a:hover { color: var(--ink-3); }
+    @media (max-width: 760px) {
+      .soon-wrap { flex-direction: column; align-items: flex-start; }
+      .soon-img img { max-width: 100%; max-height: 60vh; }
+    }
+  </style>
 </head>
-<body data-page="404">
-<header class="nav">
-  <div class="nav-top">
-    <h1><a href="">Botond Tobai</a></h1>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">Index</button>
+<body>
+<main class="soon-wrap">
+  <figure class="soon-img">
+    <img id="soon-img" alt="Work by Botond Tobai" sizes="(max-width: 760px) 90vw, 40vw">
+    <noscript><img src="img/soon/01-m.webp" width="800" height="1000" alt="Work by Botond Tobai"></noscript>
+  </figure>
+  <div class="soon-text">
+    <h1>Botond Tobai</h1>
+    <p>This website is under construction.<br>Please check back soon.</p>
+    <p class="hu" lang="hu">Az oldal hamarosan elkészül, nézz vissza később!</p>
   </div>
-  <nav id="nav-menu" class="nav-menu" aria-label="Index">
-    <details data-cat="films">
-      <summary>&nbsp; &nbsp;Films</summary>
-      <ul>
-        <li><a href="film-01/" data-slug="film-01">Film 01</a></li>
-        <li><a href="film-02/" data-slug="film-02">Film 02</a></li>
-        <li><a href="film-03/" data-slug="film-03">Film 03</a></li>
-        <li><a href="film-04/" data-slug="film-04">Film 04</a></li>
-        <li><a href="film-05/" data-slug="film-05">Film 05</a></li>
-        <li><a href="film-06/" data-slug="film-06">Film 06</a></li>
-      </ul>
-    </details>
-    <details data-cat="installation">
-      <summary>&nbsp; &nbsp;Installations</summary>
-      <ul>
-        <li><a href="installation-01/" data-slug="installation-01">Installation 01</a></li>
-        <li><a href="installation-02/" data-slug="installation-02">Installation 02</a></li>
-        <li><a href="installation-03/" data-slug="installation-03">Installation 03</a></li>
-        <li><a href="installation-04/" data-slug="installation-04">Installation 04</a></li>
-      </ul>
-    </details>
-    <details data-cat="projects">
-      <summary>&nbsp; &nbsp;Projects</summary>
-      <ul>
-        <li><a href="projekt-01/" data-slug="projekt-01">Projekt 01</a></li>
-        <li><a href="projekt-02/" data-slug="projekt-02">Projekt 02</a></li>
-        <li><a href="projekt-03/" data-slug="projekt-03">Projekt 03</a></li>
-      </ul>
-    </details>
-    <div class="links">
-      <a href="info/">BIO</a><br>
-      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a><br>
-      <a href="mailto:hello@example.com">Email</a><br>
-      <a href="hu/" hreflang="hu" lang="hu">Magyar</a>
-    </div>
-  </nav>
-</header>
-<main>
-  <section class="info">
-    <p>Page not found.</p>
-    <p><a href="./">Back to the home page</a></p>
-  </section>
 </main>
-<footer class="footer">©2026</footer>
-<script src="js/main.js" defer></script>
+<script>
+  // A different image on every visit
+  (function () {
+    var all = [{"src": "img/soon/01-m.webp", "srcset": "img/soon/01-s.webp 420w, img/soon/01-m.webp 800w, img/soon/01-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/02-m.webp", "srcset": "img/soon/02-s.webp 420w, img/soon/02-m.webp 800w, img/soon/02-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/03-m.webp", "srcset": "img/soon/03-s.webp 420w, img/soon/03-m.webp 800w, img/soon/03-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/04-m.webp", "srcset": "img/soon/04-s.webp 420w, img/soon/04-m.webp 800w, img/soon/04-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/05-m.webp", "srcset": "img/soon/05-s.webp 420w, img/soon/05-m.webp 800w, img/soon/05-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/06-m.webp", "srcset": "img/soon/06-s.webp 420w, img/soon/06-m.webp 800w, img/soon/06-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/07-m.webp", "srcset": "img/soon/07-s.webp 420w, img/soon/07-m.webp 800w, img/soon/07-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/08-m.webp", "srcset": "img/soon/08-s.webp 420w, img/soon/08-m.webp 800w, img/soon/08-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/09-m.webp", "srcset": "img/soon/09-s.webp 420w, img/soon/09-m.webp 800w, img/soon/09-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/10-m.webp", "srcset": "img/soon/10-s.webp 420w, img/soon/10-m.webp 800w, img/soon/10-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/11-m.webp", "srcset": "img/soon/11-s.webp 420w, img/soon/11-m.webp 800w, img/soon/11-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/12-m.webp", "srcset": "img/soon/12-s.webp 420w, img/soon/12-m.webp 800w, img/soon/12-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/13-m.webp", "srcset": "img/soon/13-s.webp 420w, img/soon/13-m.webp 800w, img/soon/13-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/14-m.webp", "srcset": "img/soon/14-s.webp 420w, img/soon/14-m.webp 800w, img/soon/14-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/15-m.webp", "srcset": "img/soon/15-s.webp 420w, img/soon/15-m.webp 800w, img/soon/15-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/16-m.webp", "srcset": "img/soon/16-s.webp 420w, img/soon/16-m.webp 800w, img/soon/16-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/17-m.webp", "srcset": "img/soon/17-s.webp 420w, img/soon/17-m.webp 800w, img/soon/17-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/18-m.webp", "srcset": "img/soon/18-s.webp 420w, img/soon/18-m.webp 800w, img/soon/18-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/19-m.webp", "srcset": "img/soon/19-s.webp 420w, img/soon/19-m.webp 800w, img/soon/19-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/20-m.webp", "srcset": "img/soon/20-s.webp 420w, img/soon/20-m.webp 800w, img/soon/20-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/21-m.webp", "srcset": "img/soon/21-s.webp 420w, img/soon/21-m.webp 800w, img/soon/21-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/22-m.webp", "srcset": "img/soon/22-s.webp 420w, img/soon/22-m.webp 800w, img/soon/22-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/23-m.webp", "srcset": "img/soon/23-s.webp 420w, img/soon/23-m.webp 800w, img/soon/23-l.webp 1080w", "w": 800, "h": 1000}, {"src": "img/soon/24-m.webp", "srcset": "img/soon/24-s.webp 420w, img/soon/24-m.webp 800w, img/soon/24-l.webp 1080w", "w": 800, "h": 1000}];
+    var x = all[Math.floor(Math.random() * all.length)];
+    var img = document.getElementById("soon-img");
+    img.width = x.w;
+    img.height = x.h;
+    img.srcset = x.srcset;
+    img.src = x.src;
+  })();
+</script>
 </body>
 </html>
