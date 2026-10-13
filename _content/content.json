@@ -10,7 +10,7 @@
       "en": "Portfolio of Botond Tobai: films, installations, projects."
     },
     "email": "hello@example.com",
-    "instagram": "https://instagram.com/",
+    "instagram": "https://www.instagram.com/tobai.botond/",
     "languages": [
       "en",
       "hu"
@@ -20,10 +20,7 @@
   "maintenance": {
     "enabled": true,
     "count": 24,
-    "text": {
-      "en": "This website is under construction.<br>Please check back soon.",
-      "hu": "Az oldal hamarosan elkészül, nézz vissza később!"
-    }
+    "text": "This website is under construction.<br>Please check back soon."
   },
   "categories": [
     {

@@ -511,14 +511,15 @@ def copy_static():
             shutil.copy2(f, dst)
 
 
-SOON_TEXT = {
-    "en": "This website is under construction.<br>Please check back soon.",
-    "hu": "Az oldal hamarosan elkészül, nézz vissza később!",
-}
+SOON_TEXT = "This website is under construction.<br>Please check back soon."
+
+INSTAGRAM_ICON = ('<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" '
+                  'stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/>'
+                  '<circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>')
 
 
 def build_soon(c):
-    """Temporary public page: a random project image with an under-construction note."""
+    """Temporary public page: a random project image (links to Instagram) with an under-construction note."""
     site, m = c["site"], c.get("maintenance", {})
     name = tr(site["name"], "en")
     pool = [f for p in c["projects"] for f in p["_files"]]
@@ -527,15 +528,19 @@ def build_soon(c):
     imgs = [variants(f, f"img/soon/{i + 1:02d}", root=True) for i, f in enumerate(chosen)]
     data = json.dumps([{"src": v["m"]["src"], "srcset": srcset(v).replace("{R}", ""),
                         "w": v["m"]["w"], "h": v["m"]["h"]} for v in imgs])
-    text = m.get("text", SOON_TEXT)
-    links = []
-    if site.get("email") and not site["email"].endswith("example.com"):
-        links.append(f'<a href="mailto:{e(site["email"])}">{e(site["email"])}</a>')
-    if site.get("instagram") and site["instagram"].rstrip("/") != "https://instagram.com":
-        links.append(f'<a href="{e(site["instagram"])}" target="_blank" rel="noopener">Instagram</a>')
-    contact = f'\n    <p class="soon-links">{" · ".join(links)}</p>' if links else ""
+    text = tr(m.get("text", SOON_TEXT), "en")
+    insta = site.get("instagram", "")
+    has_insta = insta.rstrip("/") not in ("", "https://instagram.com", "https://www.instagram.com")
+    handle = urlparse(insta).path.rstrip("/")  # e.g. /tobai.botond
     base_path = urlparse(site["url"]).path.rstrip("/") + "/"
     first = imgs[0]["m"]
+
+    photo = (f'<img id="soon-img" alt="Work by {e(name)}" sizes="(max-width: 760px) 90vw, 40vw">\n'
+             f'    <noscript><img src="{first["src"]}" width="{first["w"]}" height="{first["h"]}" alt="Work by {e(name)}"></noscript>')
+    if has_insta:
+        link = f'href="{e(insta)}" target="_blank" rel="noopener"'
+        photo = (f'<a class="soon-photo" {link} aria-label="{e(name)} on Instagram">\n    {photo}\n    </a>\n'
+                 f'    <a class="soon-insta" {link}>{INSTAGRAM_ICON}<span>{e(handle)}</span></a>')
 
     def page(extra_head=""):
         return f"""<!doctype html>
@@ -555,11 +560,12 @@ def build_soon(c):
     .soon-wrap {{ min-height: 100vh; display: flex; align-items: center; justify-content: center; gap: 2rem; padding: var(--pad); }}
     .soon-img {{ margin: 0; }}
     .soon-img img {{ max-width: 40vw; max-height: 70vh; width: auto; height: auto; background: var(--placeholder); }}
+    .soon-photo {{ display: block; }}
+    .soon-photo:hover img {{ opacity: 0.9; }}
+    .soon-insta {{ display: inline-flex; align-items: center; gap: 0.4em; margin-top: 0.6rem; }}
+    .soon-insta:hover {{ color: var(--ink-3); }}
     .soon-text {{ max-width: 22rem; }}
-    .soon-text h1 {{ margin: 0 0 1.2rem; font-size: 1.4rem; font-weight: 700; line-height: 1; }}
-    .soon-text p {{ margin: 0 0 1em; }}
-    .soon-text .hu {{ color: var(--ink-3); }}
-    .soon-links a:hover {{ color: var(--ink-3); }}
+    .soon-text p {{ margin: 0; }}
     @media (max-width: 760px) {{
       .soon-wrap {{ flex-direction: column; align-items: flex-start; }}
       .soon-img img {{ max-width: 100%; max-height: 60vh; }}
@@ -569,13 +575,10 @@ def build_soon(c):
 <body>
 <main class="soon-wrap">
   <figure class="soon-img">
-    <img id="soon-img" alt="Work by {e(name)}" sizes="(max-width: 760px) 90vw, 40vw">
-    <noscript><img src="{first["src"]}" width="{first["w"]}" height="{first["h"]}" alt="Work by {e(name)}"></noscript>
+    {photo}
   </figure>
   <div class="soon-text">
-    <h1>{e(name)}</h1>
-    <p>{tr(text, "en")}</p>
-    <p class="hu" lang="hu">{tr(text, "hu")}</p>{contact}
+    <p>{text}</p>
   </div>
 </main>
 <script>
