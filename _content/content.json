@@ -1,0 +1,884 @@
+{
+  "site": {
+    "name": {
+      "en": "Botond Tobai",
+      "hu": "Tobai Botond"
+    },
+    "url": "https://tobaibotond.com",
+    "description": {
+      "hu": "Tobai Botond portfóliója: filmek, installációk, projektek.",
+      "en": "Portfolio of Botond Tobai: films, installations, projects."
+    },
+    "email": "hello@example.com",
+    "instagram": "https://instagram.com/",
+    "languages": [
+      "en",
+      "hu"
+    ],
+    "goatcounter": ""
+  },
+  "categories": [
+    {
+      "id": "films",
+      "label": {
+        "hu": "Filmek",
+        "en": "Films"
+      }
+    },
+    {
+      "id": "installation",
+      "label": {
+        "hu": "Installációk",
+        "en": "Installations"
+      }
+    },
+    {
+      "id": "projects",
+      "label": {
+        "hu": "Projektek",
+        "en": "Projects"
+      }
+    }
+  ],
+  "projects": [
+    {
+      "slug": "film-01",
+      "title": "Film 01",
+      "category": "films",
+      "year": 2026,
+      "source": "E:/Stuff/SocMed/Red/Red_001",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": "home/loops/PLACEHOLDER-loop-film-01.mp4",
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2026",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "16mm kópia elérhető",
+            "en": "16mm print available"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2026",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2026"
+      ]
+    },
+    {
+      "slug": "film-02",
+      "title": "Film 02",
+      "category": "films",
+      "year": 2026,
+      "source": "E:/Stuff/SocMed/Red/Red_002",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": null,
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2026",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "16mm kópia elérhető",
+            "en": "16mm print available"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2026",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2026"
+      ]
+    },
+    {
+      "slug": "film-03",
+      "title": "Film 03",
+      "category": "films",
+      "year": 2025,
+      "source": "E:/Stuff/SocMed/Red/Red_003",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": null,
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2025",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "16mm kópia elérhető",
+            "en": "16mm print available"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2025",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2025"
+      ]
+    },
+    {
+      "slug": "film-04",
+      "title": "Film 04",
+      "category": "films",
+      "year": 2025,
+      "source": "E:/Stuff/SocMed/Red/Red_004",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": "home/loops/PLACEHOLDER-loop-film-04.mp4",
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2025",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "16mm kópia elérhető",
+            "en": "16mm print available"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2025",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2025"
+      ]
+    },
+    {
+      "slug": "film-05",
+      "title": "Film 05",
+      "category": "films",
+      "year": 2024,
+      "source": "E:/Stuff/SocMed/1956-2026/1956_01",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": null,
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2024",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "16mm kópia elérhető",
+            "en": "16mm print available"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2024",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2024"
+      ]
+    },
+    {
+      "slug": "film-06",
+      "title": "Film 06",
+      "category": "films",
+      "year": 2024,
+      "source": "E:/Stuff/SocMed/1956-2026/1956_02",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": null,
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2024",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "16mm kópia elérhető",
+            "en": "16mm print available"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2024",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2024"
+      ]
+    },
+    {
+      "slug": "installation-01",
+      "title": "Installation 01",
+      "category": "installation",
+      "year": 2026,
+      "source": "E:/Stuff/SocMed/Blacks/Black_001",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": null,
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2026",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "vegyes technika",
+            "en": "mixed media"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2026",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2026"
+      ]
+    },
+    {
+      "slug": "installation-02",
+      "title": "Installation 02",
+      "category": "installation",
+      "year": 2025,
+      "source": "E:/Stuff/SocMed/Blacks/Black_002",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": "home/loops/PLACEHOLDER-loop-installation-02.mp4",
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2025",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "vegyes technika",
+            "en": "mixed media"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2025",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2025"
+      ]
+    },
+    {
+      "slug": "installation-03",
+      "title": "Installation 03",
+      "category": "installation",
+      "year": 2024,
+      "source": "E:/Stuff/SocMed/Blacks/Black_003",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": null,
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2024",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "vegyes technika",
+            "en": "mixed media"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2024",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2024"
+      ]
+    },
+    {
+      "slug": "installation-04",
+      "title": "Installation 04",
+      "category": "installation",
+      "year": 2023,
+      "source": "E:/Stuff/SocMed/Blacks/Black_004",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": null,
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2023",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "vegyes technika",
+            "en": "mixed media"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2023",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2023"
+      ]
+    },
+    {
+      "slug": "projekt-01",
+      "title": "Projekt 01",
+      "category": "projects",
+      "year": 2026,
+      "source": "E:/Stuff/SocMed/Blacks/Black_005",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": "home/loops/PLACEHOLDER-loop-projekt-01.mp4",
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2026",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "vegyes technika",
+            "en": "mixed media"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2026",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2026"
+      ]
+    },
+    {
+      "slug": "projekt-02",
+      "title": "Projekt 02",
+      "category": "projects",
+      "year": 2025,
+      "source": "E:/Stuff/SocMed/Blacks/Black_006",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": null,
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2025",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "vegyes technika",
+            "en": "mixed media"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2025",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2025"
+      ]
+    },
+    {
+      "slug": "projekt-03",
+      "title": "Projekt 03",
+      "category": "projects",
+      "year": 2024,
+      "source": "E:/Stuff/SocMed/Blacks/Black_007",
+      "video": "https://vimeo.com/76979871",
+      "video_poster": null,
+      "cover_loop": null,
+      "description": {
+        "hu": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. Ez egy helykitöltő leírás, cseréld le a projekt saját szövegére.",
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. This is placeholder text, replace it with the project's own description."
+      },
+      "details": [
+        {
+          "label": {
+            "hu": "befejezés",
+            "en": "completion"
+          },
+          "value": "2024",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "hossz",
+            "en": "duration"
+          },
+          "value": "8’ 27”",
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "formátum",
+            "en": "format"
+          },
+          "value": {
+            "hu": "vegyes technika",
+            "en": "mixed media"
+          },
+          "italic": true
+        },
+        {
+          "label": {
+            "hu": "kamera",
+            "en": "camera"
+          },
+          "value": "Bolex H16"
+        },
+        {
+          "label": {
+            "hu": "nyersanyag",
+            "en": "film stock"
+          },
+          "value": {
+            "hu": "16mm színes pozitív",
+            "en": "16mm colour positive"
+          }
+        }
+      ],
+      "screenings": [
+        "Csoportos kiállítás @ Galéria Neve, Budapest, 2024",
+        "Filmfesztivál, rövidfilm-program @ Mozi Neve, Bécs, 2024"
+      ]
+    }
+  ],
+  "home": {
+    "strips": "home/strips"
+  },
+  "info": {
+    "hu": "<p>Tobai Botond (1990, Budapest) képzőművész és filmes. Munkái a mozgókép, az analóg film és a térbeli installáció határán mozognak.</p>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ez helykitöltő szöveg, cseréld le a saját bemutatkozásodra.</p>\n<div class=\"cv\">\n<h3>Kiállítások (válogatás)</h3>\n<span class=\"yr\">2026</span><span>Installation 01 — Galéria Neve, Budapest</span>\n<span class=\"yr\">2025</span><span>Film 03 — Fesztivál Neve, Bécs</span>\n<span class=\"yr\">2024</span><span>Projekt 03 — Csoportos kiállítás, Berlin</span>\n<span class=\"yr\">2023</span><span>Installation 04 — Projekttér, Budapest</span>\n<h3>Tanulmányok</h3>\n<span class=\"yr\">2015</span><span>MOME, Mozgókép szak</span>\n</div>",
+    "en": "<p>Botond Tobai (b. 1990, Budapest) is an artist and filmmaker working between moving image, analogue film and spatial installation.</p>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is placeholder text, replace it with your own bio.</p>\n<div class=\"cv\">\n<h3>Selected exhibitions</h3>\n<span class=\"yr\">2026</span><span>Installation 01 — Gallery Name, Budapest</span>\n<span class=\"yr\">2025</span><span>Film 03 — Festival Name, Vienna</span>\n<span class=\"yr\">2024</span><span>Projekt 03 — Group show, Berlin</span>\n<span class=\"yr\">2023</span><span>Installation 04 — Project space, Budapest</span>\n<h3>Education</h3>\n<span class=\"yr\">2015</span><span>MOME, Moving Image</span>\n</div>"
+  }
+}

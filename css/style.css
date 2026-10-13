@@ -1,0 +1,413 @@
+/* Hanken Grotesk (SIL Open Font License, see fonts/OFL.txt), self-hosted: no requests to Google */
+@font-face {
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fonts/hanken-grotesk-normal-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fonts/hanken-grotesk-normal-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fonts/hanken-grotesk-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fonts/hanken-grotesk-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Sizes mirror the reference (Cargo): base = 0.896vw (12.9px @1440), nav = 22%, padding 1.2rem */
+:root {
+  --bg: #ffffff;
+  --ink: rgba(0, 0, 0, 0.85);
+  --ink-3: rgba(0, 0, 0, 0.4);
+  --line: rgba(0, 0, 0, 0.75);
+  --placeholder: #f2f2f2;
+  --gutter: 1rem;
+  --pad: 1.2rem;
+  --nav-w: 22%;
+  /* Diatype is a commercial face; Hanken Grotesk matches its width and forms closest */
+  --sans: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --bold: 600;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: max(0.896vw, 11px); }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+a:active { opacity: 0.7; }
+img, video { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; }
+
+/* Visible keyboard focus only */
+:focus { outline: none; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* ---------- Left nav (fixed) ---------- */
+.nav {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--nav-w);
+  padding: var(--pad);
+  padding-bottom: 5rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+  z-index: 5;
+}
+.nav::-webkit-scrollbar { display: none; }
+
+.nav h1 {
+  margin: 0 0 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.nav-toggle { display: none; }
+
+/* Native disclosure triangle, as on the reference */
+.nav details { margin-bottom: 1.2em; }
+.nav summary {
+  cursor: pointer;
+  font-weight: var(--bold);
+  user-select: none;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  line-height: 1.55;
+}
+.nav li a { transition: color 0.15s; }
+.nav li a:hover,
+.nav li a.is-hover { color: var(--ink-3); }
+.nav a.active { font-weight: var(--bold); }
+
+.nav .links {
+  margin-top: 1.2em;
+  padding-top: 1em;
+  border-top: 1px solid var(--line);
+  line-height: 1.55;
+}
+.nav .links a:hover { color: var(--ink-3); }
+
+/* ---------- Main column ---------- */
+main {
+  margin-left: var(--nav-w);
+  padding: var(--pad) var(--pad) 5rem;
+  min-height: 100vh;
+}
+
+/* Home: 5/12 cover index (3 cols, landscape crop) + 7/12 masonry (7 cols) */
+.home {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: var(--gutter);
+  align-items: start;
+}
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter);
+}
+.index-grid a { display: block; aspect-ratio: 4 / 3; background: var(--placeholder); }
+.index-grid :is(img, video) { width: 100%; height: 100%; object-fit: cover; }
+
+/* Film strips: masonry gallery, each opens in the lightbox */
+.grid {
+  columns: 7;
+  column-gap: var(--gutter);
+}
+.grid .strip {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  break-inside: avoid;
+  margin-bottom: var(--gutter);
+  background: var(--placeholder);
+  cursor: zoom-in;
+}
+.grid img { width: 100%; height: auto; }
+
+.home :is(img, video) { transition: filter 0.25s ease; }
+.home.dim a:not(.hl) :is(img, video) { filter: grayscale(1) opacity(0.25); }
+
+/* Cursor label on hover */
+.cursor-label {
+  position: fixed;
+  pointer-events: none;
+  z-index: 20;
+  font-size: 0.9rem;
+  padding: 2px 5px;
+  background: var(--bg);
+  color: var(--ink);
+  transform: translate(12px, 12px);
+  opacity: 0;
+  transition: opacity 0.1s;
+  white-space: nowrap;
+}
+.cursor-label.on { opacity: 1; }
+
+/* ---------- Project page ---------- */
+/* Top: video | text, two equal columns, 2rem gutter (as on the reference) */
+.project-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 2.4rem;
+}
+
+/* Video facade: poster + play button; the player loads only on click */
+.video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+.video-play {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.video img { width: 100%; height: 100%; object-fit: cover; }
+.play-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4.2rem;
+  height: 4.2rem;
+  margin: -2.1rem 0 0 -2.1rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  transition: transform 0.2s ease;
+}
+.play-icon::after {
+  content: "";
+  position: absolute;
+  left: 54%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 0.75rem 0 0.75rem 1.2rem;
+  border-color: transparent transparent transparent #000;
+}
+.video-play:hover .play-icon { transform: scale(1.08); }
+.video iframe,
+.video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.project-text { line-height: 1.2; }
+.project-text b { font-weight: var(--bold); }
+
+/* Images: 4 equal columns */
+.stack {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gutter);
+}
+.stack figure { margin: 0; background: var(--placeholder); }
+.zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.stack img { width: 100%; height: auto; }
+
+/* Bottom pager: phones only */
+.pager {
+  display: none;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Info page ---------- */
+.info {
+  max-width: 36rem;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+.info p { margin: 0 0 1em; }
+.info a { text-decoration: underline; text-underline-offset: 0.15em; }
+.info .cv {
+  font-size: 0.9rem;
+  margin: 2.5rem 0;
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  row-gap: 0.35em;
+  line-height: 1.35;
+}
+.info .cv h3 {
+  grid-column: 1 / -1;
+  font-size: 0.9rem;
+  font-weight: var(--bold);
+  margin: 1.5em 0 0.4em;
+}
+.info .yr { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.97);
+  z-index: 50;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: calc(100vw - 8rem);
+  max-height: calc(100vh - 6rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+/* Tall film strips: shown at a readable width, scroll vertically */
+.lightbox.tall {
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 3rem 0;
+}
+.lightbox.tall img {
+  width: min(30rem, 80vw);
+  max-width: none;
+  max-height: none;
+  margin: auto;
+}
+.lightbox button {
+  position: fixed;
+  background: none;
+  border: 0;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 1rem;
+}
+.lightbox .prev,
+.lightbox .next { top: 50%; transform: translateY(-50%); }
+.lightbox .prev { left: 0.5rem; }
+.lightbox .next { right: 0.5rem; }
+.lightbox .close { top: 0.3rem; left: 0.5rem; font-size: 1.2rem; }
+.lightbox .count {
+  position: fixed;
+  top: var(--pad);
+  right: var(--pad);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Footer (fixed, blend) ---------- */
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem var(--pad);
+  font-size: 0.9rem;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.85);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  :root { --nav-w: 28%; }
+  .home { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  html { font-size: 15px; }
+  :root { --pad: 16px; --gutter: 8px; }
+  .nav {
+    position: sticky;
+    top: 0;
+    width: auto;
+    max-height: 100vh;
+    padding-bottom: var(--pad);
+    background: var(--bg);
+    z-index: 30;
+  }
+  .nav-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .nav h1 { font-size: 1.6rem; margin: 0; }
+  .nav-toggle {
+    display: block;
+    padding: 0.3rem 0;
+    border: 0;
+    background: none;
+    font-weight: var(--bold);
+    cursor: pointer;
+  }
+  .nav-toggle::after { content: " ▾"; }
+  .nav-toggle[aria-expanded="true"]::after { content: " ▴"; }
+  /* Menu collapsed behind the "Index" button (only when JS can open it) */
+  .js .nav-menu { display: none; padding-top: 1.2rem; }
+  .js .nav.open .nav-menu { display: block; }
+  .js .nav.open { overflow-y: auto; }
+  .nav details { margin-bottom: 0.8em; }
+  main { margin: 0; padding: 0.5rem var(--pad) 4rem; }
+  .grid { columns: 3; }
+  .index-grid { grid-template-columns: repeat(2, 1fr); }
+  .project-top { grid-template-columns: 1fr; gap: 1rem; }
+  .stack { grid-template-columns: repeat(2, 1fr); }
+  .pager { display: flex; }
+  .footer { font-size: 0.7rem; }
+  .lightbox img { max-width: 100vw; }
+  .lightbox .prev,
+  .lightbox .next { display: none; }
+  .cursor-label { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home img, .home video, .play-icon { transition: none; }
+}

@@ -1,0 +1,6 @@
+# Local notes, not part of the site
+portfolio-weboldal-beszelgetes.md
+
+# Build cache / state
+_tools/.cache/
+_tools/.generated.json
